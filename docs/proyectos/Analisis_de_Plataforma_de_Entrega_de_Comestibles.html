@@ -1,0 +1,1909 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Analisis de Plataforma de Entrega de Comestibles</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-ff38ca5759cea8d2b4e40dc1c167d4da.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<link rel="icon" type="image/png" href="../assets/robot.png">
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../assets/robot.png" alt="" class="navbar-logo light-content">
+    <img src="../assets/robot.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyectos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyectos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyectos">    
+        <li>
+    <a class="dropdown-item" href="../proyectos/analisis_1.ipynb">
+ <span class="dropdown-text">Análisis de Datos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://domusio.itch.io/">
+ <span class="dropdown-text">Unity Projects</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ralvac178"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/roy-alva/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../Roy_Alva_Costilla_CV.pdf" target="_blank"> <i class="bi bi-download" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Analisis de Plataforma de Entrega de Comestibles</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level1">
+<h1>Introducción</h1>
+<p>Instacart es una plataforma de entregas de comestibles donde la clientela puede registrar un pedido y hacer que se lo entreguen, similar a Uber Eats y Door Dash.</p>
+<section id="diccionario-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="diccionario-de-datos">Diccionario de datos</h2>
+<p>Hay cinco tablas en el conjunto de datos. A continuación se muestra un diccionario de datos que enumera las columnas de cada tabla y describe los datos que contienen.</p>
+<ul>
+<li><code>instacart_orders.csv</code>: cada fila corresponde a un pedido en la aplicación Instacart.
+<ul>
+<li><code>'order_id'</code>: número de ID que identifica de manera única cada pedido.</li>
+<li><code>'user_id'</code>: número de ID que identifica de manera única la cuenta de cada cliente.</li>
+<li><code>'order_number'</code>: el número de veces que este cliente ha hecho un pedido.</li>
+<li><code>'order_dow'</code>: día de la semana en que se hizo el pedido (0 si es domingo).</li>
+<li><code>'order_hour_of_day'</code>: hora del día en que se hizo el pedido.</li>
+<li><code>'days_since_prior_order'</code>: número de días transcurridos desde que este cliente hizo su pedido anterior.</li>
+</ul></li>
+<li><code>products.csv</code>: cada fila corresponde a un producto único que pueden comprar los clientes.
+<ul>
+<li><code>'product_id'</code>: número ID que identifica de manera única cada producto.</li>
+<li><code>'product_name'</code>: nombre del producto.</li>
+<li><code>'aisle_id'</code>: número ID que identifica de manera única cada categoría de pasillo de víveres.</li>
+<li><code>'department_id'</code>: número ID que identifica de manera única cada departamento de víveres.</li>
+</ul></li>
+<li><code>order_products.csv</code>: cada fila corresponde a un artículo pedido en un pedido.
+<ul>
+<li><code>'order_id'</code>: número de ID que identifica de manera única cada pedido.</li>
+<li><code>'product_id'</code>: número ID que identifica de manera única cada producto.</li>
+<li><code>'add_to_cart_order'</code>: el orden secuencial en el que se añadió cada artículo en el carrito.</li>
+<li><code>'reordered'</code>: 0 si el cliente nunca ha pedido este producto antes, 1 si lo ha pedido.</li>
+</ul></li>
+<li><code>aisles.csv</code>
+<ul>
+<li><code>'aisle_id'</code>: número ID que identifica de manera única cada categoría de pasillo de víveres.</li>
+<li><code>'aisle'</code>: nombre del pasillo.</li>
+</ul></li>
+<li><code>departments.csv</code>
+<ul>
+<li><code>'department_id'</code>: número ID que identifica de manera única cada departamento de víveres.</li>
+<li><code>'department'</code>: nombre del departamento.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="paso-1.-descripción-de-los-datos" class="level1">
+<h1>Paso 1. Descripción de los datos</h1>
+<div id="fbf1adab" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># importar librerías</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="ad36396d" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># leer conjuntos de datos en los DataFrames</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>instacard_df <span class="op">=</span> pd.read_csv(<span class="st">'/content/instacart_orders.csv'</span>, sep<span class="op">=</span><span class="st">';'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>products_df <span class="op">=</span> pd.read_csv(<span class="st">'/content/products.csv'</span>, sep<span class="op">=</span><span class="st">';'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>order_products_df <span class="op">=</span> pd.read_csv(<span class="st">'/content/order_products.csv'</span>, sep<span class="op">=</span><span class="st">';'</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>aisles_df <span class="op">=</span> pd.read_csv(<span class="st">'/content/aisles.csv'</span>, sep<span class="op">=</span><span class="st">';'</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>department_df <span class="op">=</span> pd.read_csv(<span class="st">'/content/departments.csv'</span>, sep<span class="op">=</span><span class="st">';'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="ad6a1efa" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="3e847183-c1dc-4c15-edbb-d2147192a9d8" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mostrar información del DataFrame</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>instacard_df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 478967 entries, 0 to 478966
+Data columns (total 6 columns):
+ #   Column                  Non-Null Count   Dtype  
+---  ------                  --------------   -----  
+ 0   order_id                478967 non-null  int64  
+ 1   user_id                 478967 non-null  int64  
+ 2   order_number            478967 non-null  int64  
+ 3   order_dow               478967 non-null  int64  
+ 4   order_hour_of_day       478967 non-null  int64  
+ 5   days_since_prior_order  450148 non-null  float64
+dtypes: float64(1), int64(5)
+memory usage: 21.9 MB</code></pre>
+</div>
+</div>
+<div id="5130e05e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="fdee144b-4d84-48e5-afaf-4123b0f3306b" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mostrar información del DataFrame</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>products_df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 49694 entries, 0 to 49693
+Data columns (total 4 columns):
+ #   Column         Non-Null Count  Dtype 
+---  ------         --------------  ----- 
+ 0   product_id     49694 non-null  int64 
+ 1   product_name   48436 non-null  object
+ 2   aisle_id       49694 non-null  int64 
+ 3   department_id  49694 non-null  int64 
+dtypes: int64(3), object(1)
+memory usage: 1.5+ MB</code></pre>
+</div>
+</div>
+<div id="d8370c05" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="0edd34b6-cf23-4c34-810b-3169a660032a" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mostrar información del DataFrame</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>order_products_df.info(show_counts<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 4545007 entries, 0 to 4545006
+Data columns (total 4 columns):
+ #   Column             Non-Null Count    Dtype  
+---  ------             --------------    -----  
+ 0   order_id           4545007 non-null  int64  
+ 1   product_id         4545007 non-null  int64  
+ 2   add_to_cart_order  4544171 non-null  float64
+ 3   reordered          4545007 non-null  int64  
+dtypes: float64(1), int64(3)
+memory usage: 138.7 MB</code></pre>
+</div>
+</div>
+<div id="59e2090f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="de5370ba-60c5-4ddf-c213-d11d63058cdf" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mostrar información del DataFrame</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>aisles_df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 134 entries, 0 to 133
+Data columns (total 2 columns):
+ #   Column    Non-Null Count  Dtype 
+---  ------    --------------  ----- 
+ 0   aisle_id  134 non-null    int64 
+ 1   aisle     134 non-null    object
+dtypes: int64(1), object(1)
+memory usage: 2.2+ KB</code></pre>
+</div>
+</div>
+<div id="6fc81694" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="2751bcee-a67b-4d53-fd3f-116c8535529a" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mostrar información del DataFrame</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>department_df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 21 entries, 0 to 20
+Data columns (total 2 columns):
+ #   Column         Non-Null Count  Dtype 
+---  ------         --------------  ----- 
+ 0   department_id  21 non-null     int64 
+ 1   department     21 non-null     object
+dtypes: int64(1), object(1)
+memory usage: 468.0+ bytes</code></pre>
+</div>
+</div>
+<section id="conclusiones" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones">Conclusiones</h2>
+<p>Inicialmente se puede observar tras una primera ejecución del método info que los datos csv no están separados por comas como lo es el standar, sino que están separados por ‘punto y coma’. Por lo tanto para poder obtener una muestra más precisa de los datos de la hoja de cálculo, es necesario indicar el tipo de separador correcto con la propiedad ‘sep’ y así poder ver la cantidad de columas y filas que contiene cada documento.</p>
+</section>
+</section>
+<section id="paso-2.-preprocesamiento-de-los-datos" class="level1">
+<h1>Paso 2. Preprocesamiento de los datos</h1>
+<section id="plan-de-solución" class="level2">
+<h2 class="anchored" data-anchor-id="plan-de-solución">Plan de solución</h2>
+<p>El plan es identificar los tipos de datos de cada df y realizar als conversiones necesarias. Así mismo, veririficar valores duplicados y valores ausentes para su reemplazo o eliminación.</p>
+<section id="orders-data-frame" class="level3">
+<h3 class="anchored" data-anchor-id="orders-data-frame"><code>orders</code> data frame</h3>
+<div id="b99297a5-405a-463d-8535-9adc3da4ad74" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:490}}" data-outputid="d47d3862-269b-48eb-fbcb-40b67c8d4e4c" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisa si hay pedidos duplicados</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>instacard_df.value_counts()</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#instacard_df[instacard_df.duplicated()]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">count</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">order_id</th>
+<th data-quarto-table-cell-role="th">user_id</th>
+<th data-quarto-table-cell-role="th">order_number</th>
+<th data-quarto-table-cell-role="th">order_dow</th>
+<th data-quarto-table-cell-role="th">order_hour_of_day</th>
+<th data-quarto-table-cell-role="th">days_since_prior_order</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2845099</th>
+<th data-quarto-table-cell-role="th">31189</th>
+<th data-quarto-table-cell-role="th">11</th>
+<th data-quarto-table-cell-role="th">3</th>
+<th data-quarto-table-cell-role="th">2</th>
+<th data-quarto-table-cell-role="th">7.0</th>
+<td>2</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">408114</th>
+<th data-quarto-table-cell-role="th">68324</th>
+<th data-quarto-table-cell-role="th">4</th>
+<th data-quarto-table-cell-role="th">3</th>
+<th data-quarto-table-cell-role="th">2</th>
+<th data-quarto-table-cell-role="th">18.0</th>
+<td>2</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">1112182</th>
+<th data-quarto-table-cell-role="th">202304</th>
+<th data-quarto-table-cell-role="th">84</th>
+<th data-quarto-table-cell-role="th">3</th>
+<th data-quarto-table-cell-role="th">2</th>
+<th data-quarto-table-cell-role="th">6.0</th>
+<td>2</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">391768</th>
+<th data-quarto-table-cell-role="th">57671</th>
+<th data-quarto-table-cell-role="th">19</th>
+<th data-quarto-table-cell-role="th">3</th>
+<th data-quarto-table-cell-role="th">2</th>
+<th data-quarto-table-cell-role="th">10.0</th>
+<td>2</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2282673</th>
+<th data-quarto-table-cell-role="th">86751</th>
+<th data-quarto-table-cell-role="th">49</th>
+<th data-quarto-table-cell-role="th">3</th>
+<th data-quarto-table-cell-role="th">2</th>
+<th data-quarto-table-cell-role="th">2.0</th>
+<td>2</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">1141847</th>
+<th data-quarto-table-cell-role="th">156072</th>
+<th data-quarto-table-cell-role="th">4</th>
+<th data-quarto-table-cell-role="th">2</th>
+<th data-quarto-table-cell-role="th">21</th>
+<th data-quarto-table-cell-role="th">6.0</th>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1141845</th>
+<th data-quarto-table-cell-role="th">153218</th>
+<th data-quarto-table-cell-role="th">2</th>
+<th data-quarto-table-cell-role="th">3</th>
+<th data-quarto-table-cell-role="th">8</th>
+<th data-quarto-table-cell-role="th">6.0</th>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">1141835</th>
+<th data-quarto-table-cell-role="th">120105</th>
+<th data-quarto-table-cell-role="th">16</th>
+<th data-quarto-table-cell-role="th">4</th>
+<th data-quarto-table-cell-role="th">10</th>
+<th data-quarto-table-cell-role="th">15.0</th>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1141834</th>
+<th data-quarto-table-cell-role="th">92229</th>
+<th data-quarto-table-cell-role="th">8</th>
+<th data-quarto-table-cell-role="th">5</th>
+<th data-quarto-table-cell-role="th">14</th>
+<th data-quarto-table-cell-role="th">26.0</th>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">1141928</th>
+<th data-quarto-table-cell-role="th">77235</th>
+<th data-quarto-table-cell-role="th">27</th>
+<th data-quarto-table-cell-role="th">2</th>
+<th data-quarto-table-cell-role="th">12</th>
+<th data-quarto-table-cell-role="th">10.0</th>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+<p>450135 rows × 1 columns</p>
+</div><br><label><b>dtype:</b> int64</label>
+</div>
+</div>
+<div id="480563c7" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Elimina los pedidos duplicados</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>instacard_df.drop_duplicates(inplace<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="0b2396a2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:272}}" data-outputid="1bbe6c00-001d-4f66-df62-b23ba23c5275" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vuelve a verificar si hay filas duplicadas</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>instacard_df[instacard_df.duplicated()].count()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">0</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">order_id</th>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">user_id</th>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">order_number</th>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">order_dow</th>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">order_hour_of_day</th>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">days_since_prior_order</th>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+</div><br><label><b>dtype:</b> int64</label>
+</div>
+</div>
+<div id="f6113ef1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="9a1f2ad0-8e84-488b-b997-787fa7a222b9" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vuelve a verificar únicamente si hay IDs duplicados de pedidos</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>instacard_df[<span class="st">'order_id'</span>].duplicated().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>np.int64(0)</code></pre>
+</div>
+</div>
+<p>Después de haber borrado las filas duplicadas, ahora podemos ver que tanto verificando el df completo así como filtrándolo por el id.</p>
+</section>
+<section id="products-data-frame" class="level3">
+<h3 class="anchored" data-anchor-id="products-data-frame"><code>products</code> data frame</h3>
+<div id="5f526b5b-8175-46fa-a0fd-441767d50e64" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:490}}" data-outputid="a2c15a8f-e0a3-4c3e-f9fd-a188f467ba80" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verifica si hay filas totalmente duplicadas</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>products_df.value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">count</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">product_id</th>
+<th data-quarto-table-cell-role="th">product_name</th>
+<th data-quarto-table-cell-role="th">aisle_id</th>
+<th data-quarto-table-cell-role="th">department_id</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">49694</th>
+<th data-quarto-table-cell-role="th">BURRITO- STEAK &amp; CHEESE</th>
+<th data-quarto-table-cell-role="th">38</th>
+<th data-quarto-table-cell-role="th">1</th>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<th data-quarto-table-cell-role="th">Chocolate Sandwich Cookies</th>
+<th data-quarto-table-cell-role="th">61</th>
+<th data-quarto-table-cell-role="th">19</th>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<th data-quarto-table-cell-role="th">All-Seasons Salt</th>
+<th data-quarto-table-cell-role="th">104</th>
+<th data-quarto-table-cell-role="th">13</th>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<th data-quarto-table-cell-role="th">Robust Golden Unsweetened Oolong Tea</th>
+<th data-quarto-table-cell-role="th">94</th>
+<th data-quarto-table-cell-role="th">7</th>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">49678</th>
+<th data-quarto-table-cell-role="th">Large Chicken &amp; Cheese Taquitos</th>
+<th data-quarto-table-cell-role="th">129</th>
+<th data-quarto-table-cell-role="th">1</th>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">9</th>
+<th data-quarto-table-cell-role="th">Light Strawberry Blueberry Yogurt</th>
+<th data-quarto-table-cell-role="th">120</th>
+<th data-quarto-table-cell-role="th">16</th>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">8</th>
+<th data-quarto-table-cell-role="th">Cut Russet Potatoes Steam N' Mash</th>
+<th data-quarto-table-cell-role="th">116</th>
+<th data-quarto-table-cell-role="th">1</th>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">7</th>
+<th data-quarto-table-cell-role="th">Pure Coconut Water With Orange</th>
+<th data-quarto-table-cell-role="th">98</th>
+<th data-quarto-table-cell-role="th">7</th>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">6</th>
+<th data-quarto-table-cell-role="th">Dry Nose Oil</th>
+<th data-quarto-table-cell-role="th">11</th>
+<th data-quarto-table-cell-role="th">11</th>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">5</th>
+<th data-quarto-table-cell-role="th">Green Chile Anytime Sauce</th>
+<th data-quarto-table-cell-role="th">5</th>
+<th data-quarto-table-cell-role="th">13</th>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+<p>48436 rows × 1 columns</p>
+</div><br><label><b>dtype:</b> int64</label>
+</div>
+</div>
+<div id="88daa4f4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="05550625-5574-4a90-f198-356ee11fb69a" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisa únicamente si hay ID de productos duplicados</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>products_df[<span class="st">'product_id'</span>].duplicated().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>np.int64(0)</code></pre>
+</div>
+</div>
+<div id="c773f0bf" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="db0fe7a5-4e8b-405a-9e3e-3fc3f67811fd" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisa únicamente si hay nombres duplicados de productos (convierte los nombres a letras mayúsculas para compararlos mejor)</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>products_df[<span class="st">'product_name'</span>] <span class="op">=</span> products_df[<span class="st">'product_name'</span>].<span class="bu">str</span>.upper().<span class="bu">str</span>.strip()</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>products_df[<span class="st">'product_name'</span>].duplicated().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>np.int64(1361)</code></pre>
+</div>
+</div>
+<div id="01efd02e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="936045e8-ba35-4af8-b6cd-3969f2e69480" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisa si hay nombres duplicados de productos no faltantes</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(products_df[products_df[<span class="st">'product_name'</span>].duplicated(keep<span class="op">=</span><span class="va">False</span>)<span class="op">==</span><span class="va">True</span> <span class="op">&amp;</span> products_df[<span class="st">'product_name'</span>].notna()].sort_values(by<span class="op">=</span><span class="st">"product_name"</span>))</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">#products_df['product_name'].value_counts()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       product_id                               product_name  aisle_id  \
+23339       23340  18-IN-1 HEMP PEPPERMINT PURE-CASTILE SOAP        25   
+31844       31845  18-IN-1 HEMP PEPPERMINT PURE-CASTILE SOAP        25   
+19941       19942            AGED BALSAMIC VINEGAR OF MODENA        19   
+13152       13153            AGED BALSAMIC VINEGAR OF MODENA        19   
+24830       24831         ALBACORE SOLID WHITE TUNA IN WATER        95   
+...           ...                                        ...       ...   
+46873       46874                         VITAMIN D3 5000 IU        47   
+21366       21367              WILD SARDINES IN SPRING WATER        95   
+40093       40094              WILD SARDINES IN SPRING WATER        95   
+1826         1827           YAMS CUT SWEET POTATOES IN SYRUP        81   
+38260       38261           YAMS CUT SWEET POTATOES IN SYRUP        81   
+
+       department_id  
+23339             11  
+31844             11  
+19941             13  
+13152             13  
+24830             15  
+...              ...  
+46873             11  
+21366             15  
+40093             15  
+1826              15  
+38260             15  
+
+[207 rows x 4 columns]</code></pre>
+</div>
+</div>
+<p>Después de tomar la columna ‘product_name’ y pasar todo a mayúscula y quitar espacios en blanco, noté que efectivamente hay duplicados. Sin embargo, es probable que en las demás tablas estos productos duplicados con id distinto estén siendo utilizados por lo que he decidido dejarlos como tal. Una posible solución sería realizar un reemplazo de los id por un único pero correría el riesgo de perder datos.</p>
+</section>
+<section id="departments-data-frame" class="level3">
+<h3 class="anchored" data-anchor-id="departments-data-frame"><code>departments</code> data frame</h3>
+<div id="fb410ad4-0fbf-4b80-bb09-23fdea79afe3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="6e83a4ab-b408-43b5-d62e-2564eb0d3270" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisa si hay filas totalmente duplicadas</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>department_df.duplicated().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>np.int64(0)</code></pre>
+</div>
+</div>
+<div id="332b12bb" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="cd759163-248e-492d-e8b6-3eba100ee161" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisa únicamente si hay IDs duplicadas de departamentos</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>department_df[<span class="st">'department_id'</span>].duplicated().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>np.int64(0)</code></pre>
+</div>
+</div>
+<p>Por lo visto, no hay filas duplicadas en este df.</p>
+</section>
+<section id="aisles-data-frame" class="level3">
+<h3 class="anchored" data-anchor-id="aisles-data-frame"><code>aisles</code> data frame</h3>
+<div id="9da89fb9-4679-40f5-ad0d-c34df753a3f8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="5435b4cb-2fa0-4441-982f-62c0f299a858" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisa si hay filas totalmente duplicadas</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>aisles_df.duplicated().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>np.int64(0)</code></pre>
+</div>
+</div>
+<div id="da7c2822" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="909b27f7-d0ca-4bb8-eae6-2447f409dde7" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisa únicamente si hay IDs duplicadas de pasillos</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>aisles_df[<span class="st">'aisle_id'</span>].duplicated().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>np.int64(0)</code></pre>
+</div>
+</div>
+<p>Por lo visto, no hay filas duplicadas en este df.</p>
+</section>
+<section id="order_products-data-frame" class="level3">
+<h3 class="anchored" data-anchor-id="order_products-data-frame"><code>order_products</code> data frame</h3>
+<div id="52326689-84a8-4b8f-a881-7c68780f62c9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="3fc4b753-243d-406c-cd79-f90be46d31dc" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisa si hay filas totalmente duplicadas</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>order_products_df.duplicated().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>np.int64(0)</code></pre>
+</div>
+</div>
+<div id="7b861391" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:490}}" data-outputid="8cd90aa2-a4df-456b-ccb7-debfdb15d9e4" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vuelve a verificar si hay cualquier otro duplicado engañoso</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>order_products_df.value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">count</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">order_id</th>
+<th data-quarto-table-cell-role="th">product_id</th>
+<th data-quarto-table-cell-role="th">add_to_cart_order</th>
+<th data-quarto-table-cell-role="th">reordered</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">3421079</th>
+<th data-quarto-table-cell-role="th">30136</th>
+<th data-quarto-table-cell-role="th">1.0</th>
+<th data-quarto-table-cell-role="th">0</th>
+<td>1</td>
+</tr>
+<tr class="even">
+<th rowspan="4" data-quarto-table-cell-role="th" data-valign="top">4</th>
+<th data-quarto-table-cell-role="th">10054</th>
+<th data-quarto-table-cell-role="th">5.0</th>
+<th data-quarto-table-cell-role="th">1</th>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">17616</th>
+<th data-quarto-table-cell-role="th">10.0</th>
+<th data-quarto-table-cell-role="th">1</th>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">21351</th>
+<th data-quarto-table-cell-role="th">6.0</th>
+<th data-quarto-table-cell-role="th">1</th>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">22598</th>
+<th data-quarto-table-cell-role="th">7.0</th>
+<th data-quarto-table-cell-role="th">1</th>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th rowspan="3" data-quarto-table-cell-role="th" data-valign="top">9</th>
+<th data-quarto-table-cell-role="th">3990</th>
+<th data-quarto-table-cell-role="th">14.0</th>
+<th data-quarto-table-cell-role="th">1</th>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">2014</th>
+<th data-quarto-table-cell-role="th">4.0</th>
+<th data-quarto-table-cell-role="th">1</th>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">432</th>
+<th data-quarto-table-cell-role="th">13.0</th>
+<th data-quarto-table-cell-role="th">1</th>
+<td>1</td>
+</tr>
+<tr class="even">
+<th rowspan="2" data-quarto-table-cell-role="th" data-valign="top">4</th>
+<th data-quarto-table-cell-role="th">46842</th>
+<th data-quarto-table-cell-role="th">1.0</th>
+<th data-quarto-table-cell-role="th">0</th>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">41276</th>
+<th data-quarto-table-cell-role="th">13.0</th>
+<th data-quarto-table-cell-role="th">1</th>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+<p>4544171 rows × 1 columns</p>
+</div><br><label><b>dtype:</b> int64</label>
+</div>
+</div>
+<p>Hay duplicados en los id’s pero es normal debido a que una orden contiene varios productos.</p>
+</section>
+</section>
+<section id="hallar-y-eliminar-los-valores-ausentes" class="level2">
+<h2 class="anchored" data-anchor-id="hallar-y-eliminar-los-valores-ausentes">Hallar y Eliminar los valores ausentes</h2>
+<p>Al trabajar con valores duplicados, pudimos observar que también nos falta investigar valores ausentes:</p>
+<ul>
+<li>La columna <code>'product_name'</code> de la tabla products.</li>
+<li>La columna <code>'days_since_prior_order'</code> de la tabla orders.</li>
+<li>La columna <code>'add_to_cart_order'</code> de la tabla order_productos.</li>
+</ul>
+<section id="products-data-frame-1" class="level3">
+<h3 class="anchored" data-anchor-id="products-data-frame-1"><code>products</code> data frame</h3>
+<div id="fe4a8b0f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="76bdd8af-4214-47a0-e903-b9ae38d1eb6d" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Encuentra los valores ausentes en la columna 'product_name'</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>products_df[<span class="st">'product_name'</span>].isna().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>np.int64(1258)</code></pre>
+</div>
+</div>
+<p>‘product_name’ tiene 1258 valores ausentes.</p>
+<div id="e96167bc" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="5bf1ac03-66c2-40b4-94f6-5ebd3940d0fa" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  ¿Todos los nombres de productos ausentes están relacionados con el pasillo con ID 100?</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co">#products_df['product_name'].isna().sum()</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(products_df[products_df[<span class="st">'product_name'</span>]</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    .isna()]</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'aisle_id'</span>).size()</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    .reset_index(name<span class="op">=</span><span class="st">'count'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   aisle_id  count
+0       100   1258</code></pre>
+</div>
+</div>
+<div id="8fd0a541" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="858b5913-8e2a-4348-b55c-40c9bdf0e957" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ¿Todos los nombres de productos ausentes están relacionados con el departamento con ID 21?</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(products_df[products_df[<span class="st">'product_name'</span>].isna()</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">&amp;</span> (products_df[<span class="st">'aisle_id'</span>]<span class="op">==</span><span class="dv">100</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">&amp;</span> (products_df[<span class="st">'department_id'</span>]<span class="op">==</span><span class="dv">21</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       product_id product_name  aisle_id  department_id
+37             38          NaN       100             21
+71             72          NaN       100             21
+109           110          NaN       100             21
+296           297          NaN       100             21
+416           417          NaN       100             21
+...           ...          ...       ...            ...
+49552       49553          NaN       100             21
+49574       49575          NaN       100             21
+49640       49641          NaN       100             21
+49663       49664          NaN       100             21
+49668       49669          NaN       100             21
+
+[1258 rows x 4 columns]</code></pre>
+</div>
+</div>
+<div id="325c3464" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="0c267959-aea0-4779-c03c-d60a21b7f0c5" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Usa las tablas department y aisle para revisar los datos del pasillo con ID 100 y el departamento con ID 21.</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(aisles_df[aisles_df[<span class="st">'aisle_id'</span>] <span class="op">==</span> <span class="dv">100</span>])</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(department_df[department_df[<span class="st">'department_id'</span>] <span class="op">==</span> <span class="dv">21</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    aisle_id    aisle
+99       100  missing
+
+    department_id department
+20             21    missing</code></pre>
+</div>
+</div>
+<p>En base a los df department y aisle, se puede observar que los id’s mencionados están con valores de missing.</p>
+<div id="6b295120" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="314dae2e-85c6-4746-a9f7-0649ef9a832e" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Completa los nombres de productos ausentes con 'Unknown'</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>products_df[<span class="st">'product_name'</span>].fillna(<span class="st">'Unknown'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(products_df[products_df[<span class="st">'product_name'</span>].isna()])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Empty DataFrame
+Columns: [product_id, product_name, aisle_id, department_id]
+Index: []</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_7042/62194942.py:2: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+  products_df['product_name'].fillna('Unknown', inplace=True)</code></pre>
+</div>
+</div>
+<p>Después de llenar los nombres vaciós, vemos como ahora ya todos los datos de la columna ‘product_name’ tienen valores</p>
+</section>
+<section id="orders-data-frame-1" class="level3">
+<h3 class="anchored" data-anchor-id="orders-data-frame-1"><code>orders</code> data frame</h3>
+<div id="93e41d96" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="9f2159a9-5680-41ef-fe28-a6ccfd75a3bf" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Encuentra los valores ausentes</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(instacard_df[instacard_df[<span class="st">'days_since_prior_order'</span>].isna()])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        order_id  user_id  order_number  order_dow  order_hour_of_day  \
+28        133707   182261             1          3                 10   
+96        787445    25685             1          6                 18   
+100       294410   111449             1          0                 19   
+103      2869915   123958             1          4                 16   
+104      2521921    42286             1          3                 18   
+...          ...      ...           ...        ...                ...   
+478895   2589657   205028             1          0                 16   
+478896   2222353   141211             1          2                 13   
+478922   2272807   204154             1          1                 15   
+478926   2499542    68810             1          4                 19   
+478945   1387033    22496             1          5                 14   
+
+        days_since_prior_order  
+28                         NaN  
+96                         NaN  
+100                        NaN  
+103                        NaN  
+104                        NaN  
+...                        ...  
+478895                     NaN  
+478896                     NaN  
+478922                     NaN  
+478926                     NaN  
+478945                     NaN  
+
+[28817 rows x 6 columns]</code></pre>
+</div>
+</div>
+<div id="166e5a86" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="bf2ce6fc-f5e7-4b87-d5fd-ef90ac2feab9" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ¿Hay algún valor ausente que no sea el primer pedido del cliente?</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(instacard_df[instacard_df[<span class="st">'days_since_prior_order'</span>].isna() <span class="op">&amp;</span> (instacard_df[<span class="st">'order_number'</span>] <span class="op">&gt;</span> <span class="dv">1</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Empty DataFrame
+Columns: [order_id, user_id, order_number, order_dow, order_hour_of_day, days_since_prior_order]
+Index: []</code></pre>
+</div>
+</div>
+<p>Los valores ausentes que encontramos en este df se encuentran en la columna ‘days_since_prior_order’ y sólo están cuando son la primera compra por lo que eso es correcto.</p>
+</section>
+<section id="order_products-data-frame-1" class="level3">
+<h3 class="anchored" data-anchor-id="order_products-data-frame-1"><code>order_products</code> data frame</h3>
+<div id="b8240253" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="00e0488d-d20d-4649-cecc-6d0fee3f2fb5" data-execution_count="31">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Encuentra los valores ausentes</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(order_products_df[order_products_df[<span class="st">'add_to_cart_order'</span>].isna()])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         order_id  product_id  add_to_cart_order  reordered
+737       2449164        5068                NaN          0
+9926      1968313       43867                NaN          0
+14394     2926893       11688                NaN          0
+16418     1717990        4142                NaN          0
+30114     1959075       42828                NaN          1
+...           ...         ...                ...        ...
+4505662   1800005        7411                NaN          0
+4511400   1633337         260                NaN          0
+4517562    404157        9517                NaN          0
+4534112   1673227       17835                NaN          0
+4535739   1832957       17949                NaN          1
+
+[836 rows x 4 columns]</code></pre>
+</div>
+</div>
+<div id="9a78e5ee" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="83ddec60-be57-4902-eb81-51cff69d534b" data-execution_count="32">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ¿Cuáles son los valores mínimos y máximos en esta columna?</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Min value:'</span>,order_products_df[<span class="st">'add_to_cart_order'</span>].<span class="bu">min</span>())</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Max value:'</span>,order_products_df[<span class="st">'add_to_cart_order'</span>].<span class="bu">max</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Min value: 1.0
+Max value: 64.0</code></pre>
+</div>
+</div>
+<p>el valor máximo encontrado es 64, pero se ven, tal como se mostraba en el ‘info’ que esa columna tiene el tipo float cuando debe ser int</p>
+<div id="ab9d0c2b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e16b58b7-e307-4c8f-be22-2b60fc0ddee3" data-execution_count="33">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Guarda todas las IDs de pedidos que tengan un valor ausente en 'add_to_cart_order'</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>order_product_ids <span class="op">=</span> order_products_df[order_products_df[<span class="st">'add_to_cart_order'</span>].isna()][[<span class="st">'order_id'</span>, <span class="st">'product_id'</span>]]</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(order_product_ids)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         order_id  product_id
+737       2449164        5068
+9926      1968313       43867
+14394     2926893       11688
+16418     1717990        4142
+30114     1959075       42828
+...           ...         ...
+4505662   1800005        7411
+4511400   1633337         260
+4517562    404157        9517
+4534112   1673227       17835
+4535739   1832957       17949
+
+[836 rows x 2 columns]</code></pre>
+</div>
+</div>
+<div id="54c31695" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ff2efb15-7b37-4982-cde3-1b2dd1d78b42" data-execution_count="34">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ¿Todos los pedidos con valores ausentes tienen más de 64 productos?</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Agrupa todos los pedidos con datos ausentes por su ID de pedido.</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> order_product_ids.groupby(<span class="st">'order_id'</span>)[<span class="st">'product_id'</span>].count()</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Cuenta el número de 'product_id' en cada pedido y revisa el valor mínimo del conteo.</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> counts.sort_values()</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(counts)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>order_id
+9310        1
+747668      1
+888470      1
+2621907     1
+2170451     1
+           ..
+1959075    34
+171934     40
+2136777    44
+3308010    51
+61355      63
+Name: product_id, Length: 70, dtype: int64</code></pre>
+</div>
+</div>
+<p>La cuenta de los productos por cada pedido que tiene la columna add_to_card vacía oscila entre 1 a 63.Por lo que a la pregunta inicial, la respuesta es no.</p>
+<div id="7a987d08" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="fe89f9fb-4d51-44e6-8880-12cb5d831f1c" data-execution_count="35">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remplaza los valores ausentes en la columna 'add_to_cart? con 999 y convierte la columna al tipo entero.</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>order_products_df[<span class="st">'add_to_cart_order'</span>].fillna(<span class="dv">999</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>order_products_df[<span class="st">'add_to_cart_order'</span>] <span class="op">=</span> order_products_df[<span class="st">'add_to_cart_order'</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>order_products_df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 4545007 entries, 0 to 4545006
+Data columns (total 4 columns):
+ #   Column             Dtype
+---  ------             -----
+ 0   order_id           int64
+ 1   product_id         int64
+ 2   add_to_cart_order  int64
+ 3   reordered          int64
+dtypes: int64(4)
+memory usage: 138.7 MB</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_7042/3391076673.py:3: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+  order_products_df['add_to_cart_order'].fillna(999, inplace=True)</code></pre>
+</div>
+</div>
+<p>Luego de haber llenado los valores vacíos con el número 999 ya pudimos cambiar el tipo de dato a int. Con ya se podrían hacer cálculos más adelante o incluisve trabajar con gráficos.</p>
+</section>
+</section>
+<section id="conclusiones-1" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones-1">Conclusiones</h2>
+<p>El caso tiene varias tablas y a la vez varios de los errores vistos en las clases. Iniciamos con valores duplicados y luego con valores nulos. Interesante igual lo de agrupar debido a que una orden tiene varios productos y en base a eso poder luego reemplazar los valores perdidos por ‘unknown’. Finalmente también la ultima parte que contenía valores nulos en la columna de la orden del carrito, en los cuales se reemplazó por 999 para así poder mantener los valores y a la vez facilitar más adelante otros análisis con el cambio del tipo de dato.</p>
+</section>
+</section>
+<section id="paso-3.-análisis-de-los-datos" class="level1">
+<h1>Paso 3. Análisis de los datos</h1>
+<ol type="1">
+<li>Verifica que los valores en las columnas <code>'order_hour_of_day'</code> y <code>'order_dow'</code> en la tabla orders sean razonables (es decir, <code>'order_hour_of_day'</code> oscile entre 0 y 23 y <code>'order_dow'</code> oscile entre 0 y 6).</li>
+<li>Crea un gráfico que muestre el número de personas que hacen pedidos dependiendo de la hora del día.</li>
+<li>Crea un gráfico que muestre qué día de la semana la gente hace sus compras.</li>
+<li>Crea un gráfico que muestre el tiempo que la gente espera hasta hacer su siguiente pedido, y comenta sobre los valores mínimos y máximos.</li>
+</ol>
+<section id="a1-verifica-que-los-valores-sean-sensibles" class="level3">
+<h3 class="anchored" data-anchor-id="a1-verifica-que-los-valores-sean-sensibles">[A1] Verifica que los valores sean sensibles</h3>
+<div id="growing-fruit" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="7cc89af6-1458-40cb-87fd-72ce5bc0b657" data-execution_count="36">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'order_hour_of_day value min:'</span>,instacard_df[<span class="st">'order_hour_of_day'</span>].<span class="bu">min</span>())</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'order_hour_of_day value min:'</span>,instacard_df[<span class="st">'order_hour_of_day'</span>].<span class="bu">max</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>order_hour_of_day value min: 0
+order_hour_of_day value min: 23</code></pre>
+</div>
+</div>
+<div id="accessory-malaysia" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="005ca45a-2295-44cf-d72a-af17432a40c7" data-execution_count="37">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'order_dow value min:'</span>,instacard_df[<span class="st">'order_dow'</span>].<span class="bu">min</span>())</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'order_dow value min:'</span>,instacard_df[<span class="st">'order_dow'</span>].<span class="bu">max</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>order_dow value min: 0
+order_dow value min: 6</code></pre>
+</div>
+</div>
+<p>De acuerdo a lo especificado, los rangos son correctos.</p>
+</section>
+<section id="a2-para-cada-hora-del-día-cuántas-personas-hacen-órdenes" class="level3">
+<h3 class="anchored" data-anchor-id="a2-para-cada-hora-del-día-cuántas-personas-hacen-órdenes">[A2] Para cada hora del día, ¿cuántas personas hacen órdenes?</h3>
+<div id="a36cca27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="bf4ec263-f60d-4955-aac4-4d5e832e59dd" data-execution_count="38">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(instacard_df.groupby(<span class="st">'order_hour_of_day'</span>)[<span class="st">'user_id'</span>].count())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>order_hour_of_day
+0      3180
+1      1763
+2       989
+3       770
+4       765
+5      1371
+6      4215
+7     13043
+8     25024
+9     35896
+10    40578
+11    40032
+12    38034
+13    39007
+14    39631
+15    39789
+16    38112
+17    31930
+18    25510
+19    19547
+20    14624
+21    11019
+22     8512
+23     5611
+Name: user_id, dtype: int64</code></pre>
+</div>
+</div>
+<p>Por lo que se ve, a partir de la noche, específicamente desde las 22 hay una caída notable. Luego a partir de las 7 am vemos nuevamente un mayor movimiento.</p>
+</section>
+<section id="a3-qué-día-de-la-semana-compran-víveres-las-personas" class="level3">
+<h3 class="anchored" data-anchor-id="a3-qué-día-de-la-semana-compran-víveres-las-personas">[A3] ¿Qué día de la semana compran víveres las personas?</h3>
+<div id="chief-digit" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="7c4926fc-c1da-4185-dacb-921f68f95130" data-execution_count="39">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>orders_by_day <span class="op">=</span> instacard_df[<span class="st">'order_dow'</span>].value_counts().sort_index()</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(orders_by_day)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>order_dow
+0    84090
+1    82185
+2    65833
+3    60897
+4    59810
+5    63488
+6    62649
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<p>Vemos que las personas compran a diario, pero vemos así mismo que los días donde más se suele comprar son los días domingos y lunes. Por otro lado el día de menor compra son los jueves.</p>
+</section>
+<section id="a4-cuánto-tiempo-esperan-las-personas-hasta-hacer-otro-pedido-comenta-sobre-los-valores-mínimos-y-máximos." class="level3">
+<h3 class="anchored" data-anchor-id="a4-cuánto-tiempo-esperan-las-personas-hasta-hacer-otro-pedido-comenta-sobre-los-valores-mínimos-y-máximos.">[A4] ¿Cuánto tiempo esperan las personas hasta hacer otro pedido? Comenta sobre los valores mínimos y máximos.</h3>
+<div id="c231f523" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="4c09422f-4a82-42fd-fb97-caa5b5283d8b" data-execution_count="40">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>days_since_prior_order <span class="op">=</span> instacard_df.groupby(<span class="st">'days_since_prior_order'</span>)[<span class="st">'user_id'</span>].count()</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(days_since_prior_order)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>days_since_prior_order
+0.0      9589
+1.0     20179
+2.0     27138
+3.0     30224
+4.0     31006
+5.0     30096
+6.0     33930
+7.0     44577
+8.0     25361
+9.0     16753
+10.0    13309
+11.0    11467
+12.0    10658
+13.0    11737
+14.0    13992
+15.0     9416
+16.0     6587
+17.0     5498
+18.0     4971
+19.0     4939
+20.0     5302
+21.0     6448
+22.0     4514
+23.0     3337
+24.0     3015
+25.0     2711
+26.0     2640
+27.0     2986
+28.0     3745
+29.0     2673
+30.0    51337
+Name: user_id, dtype: int64</code></pre>
+</div>
+</div>
+<p>Acá se pueden ver cosas muy interesantes. Por ejemplo que en la primera semana el número suele elevado, tomando como pico la primera semana exacta y tomando una bajada a la quincena. Por último, vemos otro pico al mes. Esto tiene sentido ya que hay personas que seguramente compran de manera diaria, otros semanal, otros quincenal y por ultimo mensual.</p>
+<ol type="1">
+<li>¿Existe alguna diferencia entre las distribuciones <code>'order_hour_of_day'</code> de los miércoles y los sábados? Traza gráficos de barra de <code>'order_hour_of_day'</code> para ambos días en la misma figura y describe las diferencias que observes.</li>
+<li>Grafica la distribución para el número de órdenes que hacen los clientes (es decir, cuántos clientes hicieron solo 1 pedido, cuántos hicieron 2, cuántos 3, y así sucesivamente…).</li>
+<li>¿Cuáles son los 20 principales productos que se piden con más frecuencia (muestra su identificación y nombre)?</li>
+</ol>
+</section>
+<section id="b1-diferencia-entre-miércoles-y-sábados-para-order_hour_of_day.-traza-gráficos-de-barra-para-los-dos-días-y-describe-las-diferencias-que-veas." class="level3">
+<h3 class="anchored" data-anchor-id="b1-diferencia-entre-miércoles-y-sábados-para-order_hour_of_day.-traza-gráficos-de-barra-para-los-dos-días-y-describe-las-diferencias-que-veas.">[B1] Diferencia entre miércoles y sábados para <code>'order_hour_of_day'</code>. Traza gráficos de barra para los dos días y describe las diferencias que veas.</h3>
+<div id="d89b8403" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:568}}" data-outputid="7dc600cf-56a7-42db-8d22-7f835599253d" data-execution_count="41">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar solo miércoles (3) y sábado (6)</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>days <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">6</span>]</span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>instacard_filtered <span class="op">=</span> instacard_df[instacard_df[<span class="st">'order_dow'</span>].isin(days)]</span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Agrupar por día de la semana y hora del día</span></span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>orders_by_hour <span class="op">=</span> instacard_filtered.groupby([<span class="st">'order_dow'</span>,<span class="st">'order_hour_of_day'</span>]).size().unstack(fill_value<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Renombrar días</span></span>
+<span id="cb72-13"><a href="#cb72-13" aria-hidden="true" tabindex="-1"></a>orders_by_hour.index <span class="op">=</span> orders_by_hour.index.<span class="bu">map</span>({<span class="dv">3</span>: <span class="st">"Miércoles"</span>, <span class="dv">6</span>: <span class="st">"Sábado"</span>})</span>
+<span id="cb72-14"><a href="#cb72-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-15"><a href="#cb72-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de barras comparativas</span></span>
+<span id="cb72-16"><a href="#cb72-16" aria-hidden="true" tabindex="-1"></a>orders_by_hour.T.plot(kind<span class="op">=</span><span class="st">"bar"</span>, figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">6</span>))</span>
+<span id="cb72-17"><a href="#cb72-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-18"><a href="#cb72-18" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Pedidos por hora (Miércoles vs Sábado)"</span>)</span>
+<span id="cb72-19"><a href="#cb72-19" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Hora del día"</span>)</span>
+<span id="cb72-20"><a href="#cb72-20" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Número de pedidos"</span>)</span>
+<span id="cb72-21"><a href="#cb72-21" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">"Día"</span>)</span>
+<span id="cb72-22"><a href="#cb72-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analisis_de_Plataforma_de_Entrega_de_Comestibles_files/figure-html/cell-41-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Se puede concluir que los días sábados por la tarde, las personas suelen realizar más compras que los miércoles. Por la mañanna, por el otro lado, suele comprarse más los miercoles.</p>
+</section>
+<section id="b2-cuál-es-la-distribución-para-el-número-de-pedidos-por-cliente" class="level3">
+<h3 class="anchored" data-anchor-id="b2-cuál-es-la-distribución-para-el-número-de-pedidos-por-cliente">[B2] ¿Cuál es la distribución para el número de pedidos por cliente?</h3>
+<div id="d8c26c23" class="cell" data-execution_count="42">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>orders_per_customer <span class="op">=</span> instacard_df.groupby(<span class="st">"user_id"</span>)[<span class="st">"order_number"</span>].<span class="bu">max</span>()</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>distribution <span class="op">=</span> orders_per_customer.value_counts().sort_index()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="00e69a66" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:574}}" data-outputid="5511d7d4-b2ca-43b0-a75d-c6c00bdd9063" data-execution_count="43">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>distribution[distribution.index <span class="op">&lt;=</span> <span class="dv">50</span>].plot(kind<span class="op">=</span><span class="st">"bar"</span>, figsize<span class="op">=</span>(<span class="dv">18</span>,<span class="dv">6</span>))</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Número de pedidos por cliente"</span>)</span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Número de clientes"</span>)</span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribución de clientes según número de pedidos"</span>)</span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)  <span class="co"># ← gira etiquetas 45°</span></span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analisis_de_Plataforma_de_Entrega_de_Comestibles_files/figure-html/cell-45-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Vemos que el número de personas que hace entre 1 y 2 pedidos es elevado y que no suelen ser clientes recurrentes. Por otro lado, vemos que sí hay muchas personas que han hecho al menos 5 pedidos y luego va bajando su nivel de compras. Es interesante ver qué pasa luego de la 5ta compra en las personas y ver la manera de que la curva siga subiendo con el número de veces que compran. Es decir, que haya más recurrencia.</p>
+</section>
+<section id="b3-cuáles-son-los-20-productos-más-populares-muestra-su-id-y-nombre" class="level3">
+<h3 class="anchored" data-anchor-id="b3-cuáles-son-los-20-productos-más-populares-muestra-su-id-y-nombre">[B3] ¿Cuáles son los 20 productos más populares (muestra su ID y nombre)?</h3>
+<div id="exterior-arizona" class="cell" data-scrolled="true" data-execution_count="44">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>orders_per_product <span class="op">=</span> order_products_df.groupby(<span class="st">"product_id"</span>)[<span class="st">"order_id"</span>].count()</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>top20 <span class="op">=</span> orders_per_product.sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">20</span>).reset_index()</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>top20 <span class="op">=</span> top20.merge(products_df, on<span class="op">=</span><span class="st">"product_id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>top20[<span class="st">"product_label"</span>] <span class="op">=</span> top20[<span class="st">"product_id"</span>].astype(<span class="bu">str</span>) <span class="op">+</span> <span class="st">" - "</span> <span class="op">+</span> top20[<span class="st">"product_name"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="universal-facial" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:740}}" data-outputid="701c3303-4f1c-4945-e2bd-6edde718831d" data-execution_count="45">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">18</span>,<span class="dv">6</span>))</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>plt.bar(top20[<span class="st">"product_label"</span>], top20[<span class="st">"order_id"</span>])</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">"right"</span>)</span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Productos (ID - Nombre)"</span>)</span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Número de órdenes"</span>)</span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Top 20 productos más populares"</span>)</span>
+<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analisis_de_Plataforma_de_Entrega_de_Comestibles_files/figure-html/cell-47-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A través de este análisis podemos ver los 20 productos que más se venden, donde en primer lugar tenemos a la banana, seguido de la banana orgánica.</p>
+<ol type="1">
+<li>¿Cuántos artículos suelen comprar las personas en un pedido? ¿Cómo es la distribución?</li>
+<li>¿Cuáles son los 20 principales artículos que vuelven a pedirse con mayor frecuencia (muestra sus nombres e IDs de los productos)?</li>
+<li>Para cada producto, ¿cuál es la tasa de repetición del pedido (número de repeticiones de pedido/total de pedidos?</li>
+<li>Para cada cliente, ¿qué proporción de los productos que pidió ya los había pedido? Calcula la tasa de repetición de pedido para cada usuario en lugar de para cada producto.</li>
+<li>¿Cuáles son los 20 principales artículos que la gente pone primero en sus carritos (muestra las IDs de los productos, sus nombres, y el número de veces en que fueron el primer artículo en añadirse al carrito)?</li>
+</ol>
+</section>
+<section id="c1-cuántos-artículos-compran-normalmente-las-personas-en-un-pedido-cómo-es-la-distribución" class="level3">
+<h3 class="anchored" data-anchor-id="c1-cuántos-artículos-compran-normalmente-las-personas-en-un-pedido-cómo-es-la-distribución">[C1] ¿Cuántos artículos compran normalmente las personas en un pedido? ¿Cómo es la distribución?</h3>
+<div id="virtual-punch" class="cell" data-execution_count="46">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>items_per_order <span class="op">=</span> order_products_df.groupby(<span class="st">"order_id"</span>)[<span class="st">"product_id"</span>].count()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="sensitive-breathing" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:565}}" data-outputid="c4d078aa-2c15-48ae-a669-57ca18837d36" data-execution_count="47">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>plt.hist(items_per_order, bins<span class="op">=</span><span class="dv">50</span>, edgecolor<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Número de artículos en el pedido"</span>)</span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Frecuencia"</span>)</span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribución de artículos por pedido"</span>)</span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analisis_de_Plataforma_de_Entrega_de_Comestibles_files/figure-html/cell-49-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Resulta interesante la gráfica pues muestra que las compras con bajos productos son resaltantes pero, podemos ver que luego hay un aumento que es el pico de frecuencia de ventas y por último una caída razonable a partir de 20 productos en ade</p>
+</section>
+<section id="c2-cuáles-son-los-20-principales-artículos-que-vuelven-a-pedirse-con-mayor-frecuencia-muestra-sus-nombres-e-ids-de-los-productos" class="level3">
+<h3 class="anchored" data-anchor-id="c2-cuáles-son-los-20-principales-artículos-que-vuelven-a-pedirse-con-mayor-frecuencia-muestra-sus-nombres-e-ids-de-los-productos">[C2] ¿Cuáles son los 20 principales artículos que vuelven a pedirse con mayor frecuencia (muestra sus nombres e IDs de los productos)?</h3>
+<div id="9374e55a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:740}}" data-outputid="95a11c96-4217-494d-9e65-1c607c2720f1" data-execution_count="48">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>reorders_per_product <span class="op">=</span> order_products_df.groupby(<span class="st">"product_id"</span>)[<span class="st">"reordered"</span>].<span class="bu">sum</span>()</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>top20_reorders <span class="op">=</span> reorders_per_product.sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">20</span>).reset_index()</span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>top20_reorders <span class="op">=</span> top20_reorders.merge(products_df, on<span class="op">=</span><span class="st">"product_id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a>top20_reorders[<span class="st">"product_label"</span>] <span class="op">=</span> (</span>
+<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a>    top20_reorders[<span class="st">"product_id"</span>].astype(<span class="bu">str</span>) <span class="op">+</span> <span class="st">" - "</span> <span class="op">+</span> top20_reorders[<span class="st">"product_name"</span>]</span>
+<span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-11"><a href="#cb79-11" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">18</span>,<span class="dv">6</span>))</span>
+<span id="cb79-12"><a href="#cb79-12" aria-hidden="true" tabindex="-1"></a>plt.bar(top20_reorders[<span class="st">"product_label"</span>], top20_reorders[<span class="st">"reordered"</span>])</span>
+<span id="cb79-13"><a href="#cb79-13" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">"right"</span>)</span>
+<span id="cb79-14"><a href="#cb79-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Productos (ID - Nombre)"</span>)</span>
+<span id="cb79-15"><a href="#cb79-15" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Número de veces reordenado"</span>)</span>
+<span id="cb79-16"><a href="#cb79-16" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Top 20 productos más reordenados"</span>)</span>
+<span id="cb79-17"><a href="#cb79-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analisis_de_Plataforma_de_Entrega_de_Comestibles_files/figure-html/cell-51-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La gráfica se parece mucho a la que se vio en los productos más vendidos. Esto es coherente y por otro lado vemos obviamente una disminución ya que los productos que vuelven a ordenarse suelen ser menores a los vendidos en general.</p>
+</section>
+<section id="c3-para-cada-producto-cuál-es-la-proporción-de-las-veces-que-se-pide-y-que-se-vuelve-a-pedir" class="level3">
+<h3 class="anchored" data-anchor-id="c3-para-cada-producto-cuál-es-la-proporción-de-las-veces-que-se-pide-y-que-se-vuelve-a-pedir">[C3] Para cada producto, ¿cuál es la proporción de las veces que se pide y que se vuelve a pedir?</h3>
+<div id="8ae9f4b1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:565}}" data-outputid="69c6850a-45b4-4799-9613-4b95367c58c1" data-execution_count="49">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>total_per_product <span class="op">=</span> order_products_df.groupby(<span class="st">"product_id"</span>)[<span class="st">"order_id"</span>].count()</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>reorders_per_product <span class="op">=</span> order_products_df.groupby(<span class="st">"product_id"</span>)[<span class="st">"reordered"</span>].<span class="bu">sum</span>()</span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a>reorder_ratio <span class="op">=</span> (reorders_per_product <span class="op">/</span> total_per_product).reset_index()</span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>reorder_ratio.columns <span class="op">=</span> [<span class="st">"product_id"</span>, <span class="st">"reorder_ratio"</span>]</span>
+<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a>reorder_ratio <span class="op">=</span> reorder_ratio.merge(products_df, on<span class="op">=</span><span class="st">"product_id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb80-9"><a href="#cb80-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-10"><a href="#cb80-10" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
+<span id="cb80-11"><a href="#cb80-11" aria-hidden="true" tabindex="-1"></a>plt.hist(reorder_ratio[<span class="st">"reorder_ratio"</span>], bins<span class="op">=</span><span class="dv">50</span>, edgecolor<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb80-12"><a href="#cb80-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Proporción de reorders (0-1)"</span>)</span>
+<span id="cb80-13"><a href="#cb80-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Cantidad de productos"</span>)</span>
+<span id="cb80-14"><a href="#cb80-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribución de la proporción de reorders por producto"</span>)</span>
+<span id="cb80-15"><a href="#cb80-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analisis_de_Plataforma_de_Entrega_de_Comestibles_files/figure-html/cell-54-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>En la gráfica se pueden ver muchos productos que unicamente se piden una sola vez, luego vemos un grueso en los demás que suelen re ordenarse. Por último. Vemos de igual manera un número interesante de productos que su número de ordenes es casi igual al de reordenes.</p>
+</section>
+<section id="c4-para-cada-cliente-qué-proporción-de-sus-productos-ya-los-había-pedido" class="level3">
+<h3 class="anchored" data-anchor-id="c4-para-cada-cliente-qué-proporción-de-sus-productos-ya-los-había-pedido">[C4] Para cada cliente, ¿qué proporción de sus productos ya los había pedido?</h3>
+<div id="medical-couple" class="cell" data-scrolled="true" data-execution_count="50">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>orders_products_users <span class="op">=</span> order_products_df.merge(</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>    instacard_df[[<span class="st">"order_id"</span>, <span class="st">"user_id"</span>]],</span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>    on<span class="op">=</span><span class="st">"order_id"</span>, how<span class="op">=</span><span class="st">"left"</span></span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-6"><a href="#cb81-6" aria-hidden="true" tabindex="-1"></a>total_per_user <span class="op">=</span> orders_products_users.groupby(<span class="st">"user_id"</span>)[<span class="st">"product_id"</span>].count()</span>
+<span id="cb81-7"><a href="#cb81-7" aria-hidden="true" tabindex="-1"></a>reorders_per_user <span class="op">=</span> orders_products_users.groupby(<span class="st">"user_id"</span>)[<span class="st">"reordered"</span>].<span class="bu">sum</span>()</span>
+<span id="cb81-8"><a href="#cb81-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-9"><a href="#cb81-9" aria-hidden="true" tabindex="-1"></a>reorder_ratio_user <span class="op">=</span> (reorders_per_user <span class="op">/</span> total_per_user).reset_index()</span>
+<span id="cb81-10"><a href="#cb81-10" aria-hidden="true" tabindex="-1"></a>reorder_ratio_user.columns <span class="op">=</span> [<span class="st">"user_id"</span>, <span class="st">"reorder_ratio"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="8892e4b4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:721}}" data-outputid="d72e852a-22b7-4456-e87e-3c0ff7cfaddf" data-execution_count="51">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>plt.hist(reorder_ratio_user[<span class="st">"reorder_ratio"</span>], bins<span class="op">=</span><span class="dv">50</span>, edgecolor<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Proporción de reorders por cliente (0-1)"</span>)</span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Cantidad de clientes"</span>)</span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribución de proporción de reorders por cliente"</span>)</span>
+<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(reorder_ratio_user[<span class="st">"reorder_ratio"</span>].describe())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analisis_de_Plataforma_de_Entrega_de_Comestibles_files/figure-html/cell-58-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>count    149626.000000
+mean          0.494853
+std           0.292685
+min           0.000000
+25%           0.272727
+50%           0.500000
+75%           0.724138
+max           1.000000
+Name: reorder_ratio, dtype: float64</code></pre>
+</div>
+</div>
+<p>La distribución confirma que el dataset refleja dos comportamientos extremos muy fuertes (exploradores vs fieles), con una gran masa de clientes en el medio que combinan ambos estilos.</p>
+</section>
+<section id="c5-cuáles-son-los-20-principales-artículos-que-las-personas-ponen-primero-en-sus-carritos" class="level3">
+<h3 class="anchored" data-anchor-id="c5-cuáles-son-los-20-principales-artículos-que-las-personas-ponen-primero-en-sus-carritos">[C5] ¿Cuáles son los 20 principales artículos que las personas ponen primero en sus carritos?</h3>
+<div id="0ae57274" class="cell" data-scrolled="true" data-execution_count="52">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>first_in_cart <span class="op">=</span> order_products_df[order_products_df[<span class="st">"add_to_cart_order"</span>] <span class="op">==</span> <span class="dv">1</span>]</span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>first_counts <span class="op">=</span> first_in_cart[<span class="st">"product_id"</span>].value_counts().head(<span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="forty-netherlands" class="cell" data-scrolled="true" data-execution_count="53">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>top20_first <span class="op">=</span> first_counts.reset_index()</span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>top20_first.columns <span class="op">=</span> [<span class="st">"product_id"</span>, <span class="st">"count"</span>]</span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a>top20_first <span class="op">=</span> top20_first.merge(products_df[[<span class="st">"product_id"</span>, <span class="st">"product_name"</span>]],</span>
+<span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a>                                on<span class="op">=</span><span class="st">"product_id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="08e41ec2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:776}}" data-outputid="bdaa7ae3-0f43-44c4-c277-995a652797c8" data-execution_count="54">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>,<span class="dv">6</span>))</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>plt.bar(top20_first[<span class="st">"product_name"</span>], top20_first[<span class="st">"count"</span>])</span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">75</span>, ha<span class="op">=</span><span class="st">"right"</span>)</span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Producto"</span>)</span>
+<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Número de veces puesto primero en carrito"</span>)</span>
+<span id="cb86-6"><a href="#cb86-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Top 20 productos que más veces son los primeros en el carrito"</span>)</span>
+<span id="cb86-7"><a href="#cb86-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analisis_de_Plataforma_de_Entrega_de_Comestibles_files/figure-html/cell-61-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Escribe aquí tus conclusiones</p>
+</section>
+<section id="conclusion-general-del-proyecto" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion-general-del-proyecto">Conclusion general del proyecto:</h3>
+<p>Los clientes de Instacart suelen comprar más los fines de semana, sobre todo entre las 10 am. y 5 pm. La mayoría hace pedidos una vez por semana y repite gran parte de sus productos habituales, especialmente los básicos como leche, pan, huevos, frutas y verduras. Los artículos más populares son bananas, fresas, espinaca, aguacates y leche orgánica. Los pasillos más importantes son los de frutas, verduras y lácteos. Normalmente los productos de primera necesidad se agregan primero al carrito, mientras que snacks o bebidas se incluyen después como compras más espontáneas. En general, los datos muestran un hábito de compra regular, centrado en productos frescos y de uso diario.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

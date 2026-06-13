@@ -1,0 +1,17 @@
+{
+  "index.qmd": {
+    "index.html": "5c58d01d"
+  },
+  "proyectos/Analisis_de_Plataforma_de_Entrega_de_Comestibles.ipynb": {
+    "Analisis_de_Plataforma_de_Entrega_de_Comestibles.html": "a5e07b1b"
+  },
+  "proyectos/Analisis_de_Ventas_de_Videojuegos.ipynb": {
+    "Analisis_de_Ventas_de_Videojuegos.html": "59484fe4"
+  },
+  "proyectos/Hábitos_de_escucha_de_los_usuarios.ipynb": {
+    "Hábitos_de_escucha_de_los_usuarios.html": "f076dc4e"
+  },
+  "proyectos/Predicciones_de_churn_de_gym.ipynb": {
+    "Predicciones_de_churn_de_gym.html": "c8d4ca7a"
+  }
+}

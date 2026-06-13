@@ -1,0 +1,35 @@
+project:
+  type: website
+  output-dir: docs
+  resources:
+    - assets/
+
+format: 
+  html:
+    theme: cosmo
+    css: styles.css
+    include-in-header:
+      text: |
+        <link rel="icon" type="image/png" href="/assets/robot.png">
+
+website:
+  navbar:
+    logo: /assets/robot.png
+    background: primary
+    left:
+      - text: "Inicio"
+        href: index.qmd
+      - text: "Proyectos"
+        menu:
+          - text: "Análisis de Datos"
+            href: proyectos/analisis_1.ipynb
+          - text: "Unity Projects"
+            href: https://domusio.itch.io/
+    right:
+      - icon: github
+        href: https://github.com/ralvac178
+      - icon: linkedin
+        href: https://www.linkedin.com/in/roy-alva/
+      - icon: download  
+        href: /assets/Roy_Alva_Tech_CV.pdf
+        target: _blank

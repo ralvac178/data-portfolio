@@ -1,0 +1,83 @@
+---
+title: "Roy Alva Costilla"
+subtitle: "Data Analyst | Data Engineer | BI Analyst"
+---
+
+::: {.columns .v-center-container}
+::: {.column width="25%"}
+![](assets/circle_profile.png){.profile-pic}
+:::
+
+::: {.column width="60%"}
+### Sobre mí
+::: {style="text-align: justify; text-justify: inter-word;"}
+Data Analyst, con sólidas habilidades en Python (pandas, regex), SQL y Excel, enfocado
+en data wrangling y automatización básica. Experiencia desarrollando proyectos
+orientados a la toma de decisiones y visualización en Power BI dentro del ecosistema
+Microsoft 365. Analítico, responsable y proactivo, con alta capacidad de aprendizaje.
+:::
+
+::: {.stack-container}
+![](https://img.shields.io/badge/Python-FFD343?style=for-the-badge&logo=python&logoColor=white)
+![](https://img.shields.io/badge/SQL-CBCBCB?style=for-the-badge&logo=mysql&logoColor=white)
+![](https://img.shields.io/badge/C%23-5D2B90?style=for-the-badge&logo=c-sharp&logoColor=white)
+![](https://img.shields.io/badge/Unity-000000?style=for-the-badge&logo=unity&logoColor=white)
+![](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white)
+
+:::
+:::
+:::
+
+::: {.row}
+::: {.col-md-12 .text-center}
+### Un vistazo a mi enfoque técnico {.section-title}
+<div class="video-wrapper">
+{{< video https://youtu.be/ae4j5jnKdTs >}}
+</div>
+:::
+:::
+
+
+<hr style="margin: 60px 0;">
+
+### Mis Areas de Especialidad {.section-title}
+::: {.grid}
+::: {.g-col-6}
+::: {.card .h-100 .shadow-sm}
+::: {.card-body}
+#### 📊 Análisis de Datos
+<p class="card-text">Python (Pandas, NumPy), SQL y visualización estratégica con Power BI/Tableau para la toma de decisiones.</p>
+<a href="proyectos/analisis_datos.qmd" target="_blank"  class="btn btn-primary">Ver Proyectos</a>
+:::
+:::
+:::
+
+
+::: {.g-col-6}
+::: {.card .h-100 .shadow-sm}
+::: {.card-body}
+#### 🎮 Desarrollo en Unity
+<p class="card-text">Diseño de mecánicas, scripts en C# y optimización de entornos 3D para simuladores y videojuegos.</p>
+<a href="https://domusio.itch.io/" target="_blank" class="btn btn-primary">Ver Proyectos</a>
+:::
+:::
+:::
+:::
+
+
+
+### Proyectos de Análisis de Datos {.section-title2}
+
+::: {#proyectos-data .mt-5}
+:::
+
+```{=quarto}
+---
+listing:
+  id: proyectos-data
+  contents: proyectos/*.ipynb
+  type: grid
+  grid-columns: 2
+  fields: [image, title]
+  sort: "date desc"
+---

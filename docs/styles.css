@@ -1,0 +1,120 @@
+/* Este selector apunta a la fila de columnas que creamos */
+.v-center-container {
+  display: flex !important;
+  align-items: center !important; /* Centrado vertical */
+  justify-content: center !important;
+  gap: 10px; /* Separación entre foto y texto */
+  padding: 10px 0;
+}
+
+/* Forzamos a que las columnas de Quarto se comporten como cajas flexibles */
+.v-center-container > .column {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important; /* Centra el contenido dentro de la columna */
+}
+
+/* Espaciado para las tarjetas */
+.card {
+  border: none !important;
+  transition: transform 0.2s;
+  background-color: #f8f9fa;
+}
+
+/* Efecto al pasar el mouse por encima (opcional) */
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Estilo para los botones */
+.btn-primary {
+  background-color: #007bff; /* Puedes cambiar este color al que prefieras */
+  border: none;
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+/* Asegura que la foto sea un círculo y esté centrada en su columna */
+.profile-pic {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #f8f9fa;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: block;
+  margin: 20px auto;
+}
+
+/* Fuerza el alineamiento vertical de las columnas en la fila */
+.row.align-items-center {
+  display: flex;
+  align-items: center;
+}
+
+/* Títulos con espacio superior e inferior */
+.section-title {
+  margin-top: 50px !important;    /* Espacio antes del título */
+  margin-bottom: 10px !important; /* Espacio después del título */
+}
+
+/* Títulos con espacio superior e inferior */
+.section-title2 {
+  margin-top: 80px !important;    /* Espacio antes del título */
+  margin-bottom: 20px !important; /* Espacio después del título */
+}
+
+/* Contenedor del video para controlarlo */
+.video-wrapper {
+  max-width: 650px; /* Un tamaño que se ve grande pero no domina toda la web */
+  margin: 20px auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Sombra elegante */
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+/* En móvil, que el video se apile correctamente */
+@media (max-width: 768px) {
+  .profile-pic { width: 100px; height: 100px; }
+  .video-wrapper { max-width: 100%; margin-top: 20px; }
+}
+/* Stack más compacto (estilo flat) */
+.stack-container img {
+  display: inline-block !important;
+  height: 25px !important;      /* Ajusta esta altura al tamaño de tu texto */
+  width: auto !important;
+  vertical-align: middle !important;
+  margin-right: 5px;
+}
+
+.subtitle {
+  font-weight: bold;
+}
+
+.quarto-listing-grid .card {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.quarto-listing-grid .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Asegura que la imagen de la tarjeta sea consistente */
+.quarto-listing-grid .card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Centrado del título de pie */
+.quarto-listing-grid .card-title {
+  text-align: center;
+  font-weight: 600;
+  padding: 15px;
+}
