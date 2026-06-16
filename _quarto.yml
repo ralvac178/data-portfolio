@@ -15,13 +15,6 @@ website:
       - text: "Inicio"
         href: index.qmd
 
-      - text: "Proyectos"
-        menu:
-          - text: "Análisis de Datos"
-            href: proyectos/analisis_1.html
-          - text: "Unity Projects"
-            href: https://domusio.itch.io/
-
     right:
       - icon: github
         href: https://github.com/ralvac178

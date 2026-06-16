@@ -47,7 +47,7 @@ Microsoft 365. Analítico, responsable y proactivo, con alta capacidad de aprend
 ::: {.card-body}
 #### 📊 Análisis de Datos
 <p class="card-text">Python (Pandas, NumPy), SQL y visualización estratégica con Power BI/Tableau para la toma de decisiones.</p>
-<a href="proyectos/analisis_datos.qmd" target="_blank"  class="btn btn-primary">Ver Proyectos</a>
+<a href="https://github.com/ralvac178" target="_blank"  class="btn btn-primary">Ver Proyectos</a>
 :::
 :::
 :::
